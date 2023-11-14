@@ -24,4 +24,6 @@ THEN the password is either displayed in an alert or written to the page
 
 ## Screenshot of Webpage
 
+![Screenshot of Webpage](https://github.com/mbullock710/Password-Generator/assets/148500556/bb3b3eab-ebda-466c-a5c2-c50f2f8bd142)
+
 ## Link to Deployed Application
