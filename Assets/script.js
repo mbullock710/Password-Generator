@@ -4,10 +4,10 @@ var generateBtn = document.querySelector("#generate");
 function generatePassword() {
 
   // Defining character sets available for password
-  var lowercaseCharacters = "abcdefghijklmnopqrstuvwxyz"
-  var uppercaseCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  var numericCharacters = "0123456789"
-  var specialCharacters = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+  var lowercaseCharacters = "abcdefghijklmnopqrstuvwxyz";
+  var uppercaseCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var numericCharacters = "0123456789";
+  var specialCharacters = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 
   // WHEN prompted for password criteria
   // THEN I select which criteria to include in the password
@@ -19,7 +19,7 @@ function generatePassword() {
   // THEN my input should be validated
   if (pwLength < 8 || pwLength > 128) {
     window.alert("Please select a valid number between 8 and 128 characters you wish to use for your password.");
-    return "";
+    return '';
   }
 
   // WHEN asked for character types to include in the password
@@ -33,9 +33,34 @@ function generatePassword() {
   // THEN at least one character type should be selected
   if (!lowercaseConfirmation && !uppercaseConfirmation && !numericConfirmation && !specialConfirmation) {
     window.alert("Please select at least one character type.");
-    return "";
+    return '';
   }
 
+  var pwCharacters = '';
+  if (lowercaseConfirmation) {
+    pwCharacters += lowercaseCharacters
+  }
+  if (uppercaseConfirmation) {
+    pwCharacters += uppercaseCharacters
+  }
+  if (numericConfirmation) {
+    pwCharacters += numericCharacters
+  }
+  if (specialConfirmation) {
+    pwCharacters += specialCharacters
+  }
+
+  // WHEN all prompts are answered
+  // THEN a password is generated that matches the selected criteria
+  var password = '';
+  for (let i = 0; i < pwLength; i++) {
+    var pwCreation = Math.floor(Math.random() * pwCharacters.length);
+    password += pwCharacters.charAt(pwCreation)
+  }
+
+  // WHEN the password is generated
+  // THEN the password is either displayed in an alert or written to the page
+  return password;
 
 }
 
